@@ -38,15 +38,24 @@ public class ClearSearchField {
         Assert.assertEquals("",elementval1);
 
 
-    }@Test
+    }
+    @Test
     public void searchStringIsEmpty(){
         CatalogPage newMainPage = mainPage.clickingOnTheSearchButton();
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
         boolean filters = !driver.findElements( By.xpath("//div[@id='filters']")).isEmpty();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
+    @Test
+    public void transitionToGoods() {
+        MainPage newmainPage = mainPage.fillTheSearchBox("Штани");
+        mainPage.clickingOnTheSearchButton();
+        WebElement element = driver.findElement(By.xpath("//img[@class='b-tile-item__image js-lazy-img lazy-loaded']"));
+        String string = element.getAttribute("title");
+        Assert.assertEquals("Штани",string);
 
 
+    }
     @After
     public void tearDown(){
         driver.quit();
@@ -54,3 +63,4 @@ public class ClearSearchField {
 
 
 }
+
