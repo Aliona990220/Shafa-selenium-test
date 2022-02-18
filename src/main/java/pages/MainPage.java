@@ -24,6 +24,14 @@ public class MainPage {
         WebElement allCategories = driver.findElements(By.xpath("//div[@class=' css-1uccc91-singleValue']")).get(1);
         return allCategories;
     }
+    public WebElement categoryForWomen() {
+        WebElement categoryForWomen = driver.findElements(By.xpath("//div[@class=' css-1hwfws3']")).get(1);
+        return categoryForWomen;
+    }
+    public WebElement categoryForMen() {
+        WebElement categoryForMen = driver.findElements(By.xpath("//div[@class=' css-1hwfws3']")).get(1);
+        return categoryForMen;
+    }
 
 
     public MainPage fillTheSearchBox(String search){

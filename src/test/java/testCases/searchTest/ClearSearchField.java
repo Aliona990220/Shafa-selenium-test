@@ -48,14 +48,28 @@ public class ClearSearchField {
     }
     @Test
     public void transitionToGoods() {
-        MainPage newmainPage = mainPage.fillTheSearchBox("Штани");
+        mainPage.fillTheSearchBox("Штани");
         mainPage.clickingOnTheSearchButton();
-        WebElement element = driver.findElement(By.xpath("//img[@class='b-tile-item__image js-lazy-img lazy-loaded']"));
-        String string = element.getAttribute("title");
-        Assert.assertEquals("Штани",string);
+        WebElement searchResult = driver.findElement(By.xpath("//img[@class='b-tile-item__image js-lazy-img lazy-loaded']"));
+        String string = searchResult.getAttribute("title");
+        searchResult.click();
+        WebElement titleProductPage = driver.findElement(By.xpath("//h1[@class='b-product__title']"));
+        Assert.assertEquals(string,titleProductPage.getText());
 
 
     }
+    @Test
+    public void switchingBetweenaСategories() throws InterruptedException {
+        WebElement categories = mainPage.getAllCategories();
+        Assert.assertEquals("Все категории",categories.getText());
+        categories.click();
+        WebElement categoriesWomen = mainPage.categoryForWomen();
+        categoriesWomen.click();
+//        Assert.assertEquals("Женщинам", categories.getText());
+//        Thread.sleep(5000);
+
+    }
+
     @After
     public void tearDown(){
         driver.quit();
