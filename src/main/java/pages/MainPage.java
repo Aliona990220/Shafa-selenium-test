@@ -8,6 +8,7 @@ public class MainPage {
     private WebDriver driver;
 
 
+
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -52,6 +53,22 @@ public class MainPage {
     public MainPage clickOnAllCategories(){
         getAllCategories().click();
         return this;
+    }
+    public WebElement clikProductPage(){
+        WebElement clikProductPages = driver.findElement(By.xpath("//img[@class='b-tile-item__image js-lazy-img lazy-loaded']"));
+        return clikProductPages;
+    }
+    public ProductPage clikToProductPage() {
+        clikProductPage().click();
+        return new ProductPage(driver);
+    }
+    public WebElement registrationElement() {
+        WebElement registrationElement = driver.findElement(By.xpath("//a[@class='_2qqoJNQGcWg9_UaO6lWX _1XWEcnyzQmOrx1PJyKY2']"));
+        return registrationElement;
+    }
+    public LoginPage clikRegistrationElement(){
+        registrationElement().click();
+        return new LoginPage(driver);
     }
 
 
