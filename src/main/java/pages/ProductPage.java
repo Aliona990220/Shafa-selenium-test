@@ -12,10 +12,21 @@ public class ProductPage {
 
     }
 
-    public WebElement likeProductPage() {
-        WebElement likeProductPages = driver.findElement(By.xpath("//svg[@class='b-product-buttons__icon']"));
-        return likeProductPages;
+    public WebElement newPage() {
+        WebElement newPages = driver.findElement(By.xpath("//div[@class='_1XIo1mbj_75DOTiXovdM NWoSNylPq2jU8QmRiIcl']"));
+        return newPages;
     }
+        public WebElement likeProductPage () {
+            WebElement likeProductPages = driver.findElement(By.xpath("//span[@class='b-product-buttons__icon-holder']"));
+            return newPage();
+        }
+        public WebElement closePopuButton() {
+            WebElement closePopupButton = driver.findElement(By.xpath("//svg[@class='_3uENNXw0uoUlxLW6Jnr3']"));
+            return closePopupButton;
+        }
+
+
+
 }
 
 

@@ -22,6 +22,7 @@ public class ClearSearchField {
     private LoginPage loginPage;
 
     public ClearSearchField() {
+
     }
 
 
@@ -33,6 +34,10 @@ public class ClearSearchField {
         driver.manage().window().maximize();
         driver.get("https://shafa.ua/");
         mainPage = new MainPage(driver);
+        loginPage = new LoginPage(driver);
+        productPage = new ProductPage(driver);
+        catalogPage = new CatalogPage(driver);
+
     }
 
     @Test
@@ -82,16 +87,16 @@ public class ClearSearchField {
     }
 
     @Test
-    public void addingAProductToFavorites(){
+    public void addingAProductToFavorites() {
         mainPage.clikProductPage();
-        Assert.assertEquals("https://shafa.ua/women/aksessuary/sharfy-i-platki/79914688-sharf-palantin-u-riznomanitnih-kolorah-turciya","https://shafa.ua/women/aksessuary/sharfy-i-platki/79914688-sharf-palantin-u-riznomanitnih-kolorah-turciya");
-
+        Assert.assertEquals("https://shafa.ua/women/aksessuary/sharfy-i-platki/79914688-sharf-palantin-u-riznomanitnih-kolorah-turciya", "https://shafa.ua/women/aksessuary/sharfy-i-platki/79914688-sharf-palantin-u-riznomanitnih-kolorah-turciya");
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         productPage.likeProductPage().click();
-        WebElement closePopupButton = driver.findElement(By.xpath("//svg[@class='_3uENNXw0uoUlxLW6Jnr3']"));
-        closePopupButton.click();
-        Assert.assertEquals("https://shafa.ua/login/registration?next=https%3A%2F%2Fshafa.ua%2Fwomen%2Faksessuary%2Fsharfy-i-platki%2F79914688-sharf-palantin-u-riznomanitnih-kolorah-turciya" ,"https://shafa.ua/login/registration?next=https%3A%2F%2Fshafa.ua%2Fwomen%2Faksessuary%2Fsharfy-i-platki%2F79914688-sharf-palantin-u-riznomanitnih-kolorah-turciya");
 
-}
+        productPage.closePopuButton().click();
+        Assert.assertEquals("https://shafa.ua/login/registration?next=https%3A%2F%2Fshafa.ua%2Fwomen%2Faksessuary%2Fsharfy-i-platki%2F79914688-sharf-palantin-u-riznomanitnih-kolorah-turciya", "https://shafa.ua/login/registration?next=https%3A%2F%2Fshafa.ua%2Fwomen%2Faksessuary%2Fsharfy-i-platki%2F79914688-sharf-palantin-u-riznomanitnih-kolorah-turciya");
+
+    }
 
 
     @After
